@@ -67,7 +67,10 @@ namespace TaxCalculator
                 }
 
             }
-
+            
+            //Adding a simple functionality to ask for and print n elements entered by the user stored 
+            //in an array in descendent and ascendent order
+            
             int n;
             int numeros;
             Console.Write("Ingrese una cantidad de numeros que desea almacenar: ");
@@ -103,6 +106,37 @@ namespace TaxCalculator
                 Console.Write(arreglo[i] + " ");
             }
             Console.WriteLine();
+            
+            //Adding a simple TAX (INNS & IR) calculation 
+            int salario;
+            double inns = 0.06, ir = 0.15;
+            double salarioTotal1 = 0, salarioTotal2 = 0;
+
+            Console.WriteLine("Ingrese su salario mensual en cordobas: ");
+            while (!int.TryParse(Console.ReadLine(), out salario))
+            {
+                Console.Write("Numero invalido. Por favor ingresa un numero entero: ");
+            }
+
+            if (salario > 8333.33)
+            {
+                salarioTotal1 = salario * inns;
+            } else
+            {
+                Console.WriteLine("El INNS e IR no le deduce de su salario ya que es muy bajo");
+            }
+
+            if (salario > 8333.33)
+            {
+                salarioTotal2 = salario * ir;
+            } else
+            {
+                Console.WriteLine("El INNS e IR no le deduce de su salario ya que es muy bajo");
+            }
+
+            Console.WriteLine($"La cantidad de INNS que se deducira de su salario es de: {salarioTotal1} " +
+                $"y la cantidad que se deducira de IR es igual a: {salarioTotal2}");
+
             Console.ReadKey();
         } 
     }
